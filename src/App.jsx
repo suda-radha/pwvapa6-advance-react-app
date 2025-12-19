@@ -4,17 +4,22 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import AddTodo from './components/AddTodo.jsx'
 import TodoList from './components/TodoList.jsx'
+import { ThemeProvider } from './context/Theme.jsx'
+import ToggleTheme from './components/ToggleTheme.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <h1>Todo App</h1>
+    <div>
+    <ThemeProvider>
+      <ToggleTheme/>
+    {/* <h1>Todo App</h1>
     <AddTodo />
-    <TodoList />
+    <TodoList /> */}
+    </ThemeProvider>
       
-    </>
+    </div>
   )
 }
 
