@@ -18,14 +18,36 @@ test.describe('Todo App Tests', () => {
         //assert the todo item is added
         const todoItem = await page.locator('li:has-text("Buy clothes")');
         await expect(todoItem).toBeVisible();
+    });
 
+    test('should allow users to toggle a todo item', async ({ page }) => {
+        //add a todo item
+        await page.fill('input[placeholder="Enter a Todo item.."]', 'Buy groceries');
+        await page.click('button:has-text("Add")'); 
+        //toggle the todo item
+        await page.click('li:has-text("Buy groceries") button:has-text("Complete")');
 
+        //assert the todo item is toggled
+        const todoItem = await page.locator('li:has-text("Buy groceries")');
+        await expect(todoItem).toHaveCSS('text-decoration', 'line-through');
+    });
+
+    test('should allow users to delete a todo item', async ({ page }) => {
+        //add a todo item
+        await page.fill('input[placeholder="Enter a Todo item.."]', 'Buy groceries');
+        await page.click('button:has-text("Add")'); 
+        //delete the todo item
+        await page.click('li:has-text("Buy groceries") button:has-text("Delete")');
+        //assert the todo item is deleted
+        const todoItem = await page.locator('li:has-text("Buy groceries")');
+        await expect(todoItem).not.toBeVisible();
     });
 
 
 
-
-
-
-
 });
+
+
+
+
+
