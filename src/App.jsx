@@ -6,18 +6,23 @@ import AddTodo from './components/AddTodo.jsx'
 import TodoList from './components/TodoList.jsx'
 import { ThemeProvider } from './context/Theme.jsx'
 import ToggleTheme from './components/ToggleTheme.jsx'
+import Counter from './components/Counter.jsx'
+import SpyFunc from './components/SpyFunc.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div>
-    <ThemeProvider>
+      <SpyFunc/>
+
+    {/*  <Counter/>
+     <ThemeProvider>
       <ToggleTheme/>
-    {/* <h1>Todo App</h1>
+    <h1>Todo App</h1>
     <AddTodo />
-    <TodoList /> */}
-    </ThemeProvider>
+    <TodoList />
+    </ThemeProvider> */}
       
     </div>
   )
